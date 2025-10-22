@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { CarFrontIcon, Lock, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLogin } from "@/store/sever/login/mutation";
 
 const formSchema = z.object({
   ssid: z
@@ -29,6 +30,8 @@ const Login = () => {
     },
   });
 
+  const login = useLogin();
+
   return (
     <div className=" flex items-center justify-center h-screen">
       <div className=" shadow border rounded-md p-4 w-[400px] ">
@@ -44,7 +47,7 @@ const Login = () => {
         </div>
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit((val) => console.log(val))}
+            onSubmit={form.handleSubmit((val) => login.mutate(val))}
             className=" space-y-4"
             action=""
           >
