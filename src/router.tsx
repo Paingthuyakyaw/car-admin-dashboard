@@ -16,6 +16,12 @@ const Router = () => {
         },
       ],
     },
+    {
+      path: "/login",
+      lazy: async () => ({
+        Component: (await import("@/page/auth/login")).default,
+      }),
+    },
   ]);
 
   return <RouterProvider router={router} />;
