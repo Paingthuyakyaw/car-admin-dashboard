@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { CarFrontIcon, Lock, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLogin } from "@/store/sever/login/mutation";
+import { useLogin } from "@/store/server/login/mutation";
 
 const formSchema = z.object({
   ssid: z
@@ -105,7 +105,10 @@ const Login = () => {
             </div>
 
             <div className="">
-              <Button className=" cursor-pointer w-full bg-indigo-600 hover:bg-indigo-700 text-white">
+              <Button
+                isLoading={login.isPending}
+                className=" cursor-pointer w-full bg-indigo-600 hover:bg-indigo-700 text-white"
+              >
                 Login
               </Button>
             </div>
