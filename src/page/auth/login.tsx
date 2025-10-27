@@ -11,7 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { CarFrontIcon, Lock, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { useLogin } from "@/store/server/login/mutation";
+import { useLogin } from "@/store/server/auth/mutation";
 
 const formSchema = z.object({
   ssid: z

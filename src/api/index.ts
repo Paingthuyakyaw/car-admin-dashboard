@@ -16,3 +16,15 @@ export const authJsonToken = (file?: boolean) => {
     Authorization: `Bearer ${token}`,
   };
 };
+
+export const fetchProfile = async () => {
+  const { data } = await axios.post(
+    `admin/validate-token`,
+    {},
+    {
+      headers: authJsonToken(),
+    }
+  );
+
+  return data;
+};

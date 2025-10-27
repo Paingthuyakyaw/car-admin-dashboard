@@ -9,7 +9,7 @@ const Router = () => {
       }),
       children: [
         {
-          index: true,
+          path: "/dashboard",
           lazy: async () => ({
             Component: (await import("@/page/dashboard")).default,
           }),

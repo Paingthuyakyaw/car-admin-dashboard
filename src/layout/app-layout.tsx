@@ -1,4 +1,4 @@
-import { Outlet } from "react-router";
+import { Navigate, Outlet } from "react-router";
 import NavLayout from "./nav-layout";
 import { BellIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -7,11 +7,38 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { useEffect, useState } from "react";
+import { fetchProfile } from "@/api";
 const AppLayout = () => {
+  const token = localStorage.getItem("token");
+  const [authorized, setAuthorized] = useState(true);
+
+  useEffect(() => {
+    if (token) {
+      const fetchingData = async () => {
+        try {
+          const data = await fetchProfile();
+          setAuthorized(data.message === "Success");
+        } catch (error) {
+          console.log(error);
+          setAuthorized(false);
+        }
+      };
+
+      fetchingData();
+    } else {
+      setAuthorized(false);
+    }
+  }, [token]);
+
+  if (!authorized) {
+    return <Navigate to={"/login"} replace />;
+  }
+
   return (
     <div>
       <div className=" flex  ">
-        <div className=" w-[280px] 2xl:w-[250px]  shadow-sm border-r  min-h-screen ">
+        <div className=" ">
           <NavLayout />
         </div>
         <div className=" w-full">
