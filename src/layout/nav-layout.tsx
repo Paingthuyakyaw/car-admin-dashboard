@@ -1,4 +1,10 @@
-import { Home, ChevronLeft, ChevronRight, CarFrontIcon } from "lucide-react";
+import {
+  Home,
+  ChevronLeft,
+  ChevronRight,
+  CarFrontIcon,
+  Users,
+} from "lucide-react";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router";
 
@@ -14,7 +20,6 @@ export default function NavLayout() {
         ${collapsed ? "w-14" : "w-[300px]"}
       `}
     >
-      {/* Top section */}
       <div>
         {/* Header */}
         <div
@@ -45,6 +50,12 @@ export default function NavLayout() {
             icon={<Home size={16} />}
             label="Dashboard"
             route="/dashboard"
+            collapsed={collapsed}
+          />
+          <MenuItem
+            icon={<Users size={16} />}
+            label="Team"
+            route="/team"
             collapsed={collapsed}
           />
         </nav>

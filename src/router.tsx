@@ -1,4 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router";
+import { teamRouter } from "./router/team.route";
 
 const Router = () => {
   const router = createBrowserRouter([
@@ -14,6 +15,7 @@ const Router = () => {
             Component: (await import("@/page/dashboard")).default,
           }),
         },
+        ...teamRouter,
       ],
     },
     {
